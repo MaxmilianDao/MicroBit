@@ -12,12 +12,11 @@ input.onButtonPressed(Button.B, function () {
 
 // all the possible LED states
 function leds_off() {
-    basic.forever(function () {}
-        )
+    state = 1
     }
 
+
 function leds_on() {
-    basic.forever(function () {
         basic.showLeds(`
         # # # # #
         # # # # #
@@ -25,11 +24,9 @@ function leds_on() {
         # # # # #
         # # # # #
         `)
-    })
 }
 
-function leds_flash () {
-    basic.forever(function () {
+function leds_flash() {
         basic.showLeds(`
         # # # # #
         # # # # #
@@ -40,11 +37,9 @@ function leds_flash () {
         basic.pause(200)
         basic.clearScreen()
         basic.pause(200)
-    })
 }
 
-function leds_alternate () {
-    basic.forever(function () {
+function leds_alternate() {
         basic.showLeds(`
         # # . . .
         # # . . .
@@ -65,7 +60,6 @@ function leds_alternate () {
         basic.pause(150)
         basic.clearScreen()
         basic.pause(50)
-    })
 }
 
 // checks for and displays the desired LED mode, use buttons to pick
@@ -73,16 +67,22 @@ basic.forever(function () {
     if (state > 4) {
         state = 1
     }
+
     if (state < 1) {
         state = 4
     }
+
     if (state == 1) {
         leds_off()
-    } else if (state == 2) {
+    }
+    else if (state == 2) {
         leds_on()
-    } else if (state == 3) {
+    }
+    else if (state == 3) {
         leds_flash()
-    } else {
+    }
+    else if (state == 4) {
         leds_alternate()
     }
 })
+
